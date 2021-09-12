@@ -5,11 +5,12 @@ import MaterialIcon from '@material/react-material-icon'
 import Logo from '../../assets/Logo.png'
 import restaurante from '../../assets/restaurante-fake.png'
 import ImageCard from '../../Components/ImageCard' 
-import { RestauranteCard } from '../../Components'
+import { RestauranteCard,Modal } from '../../Components'
 
 import {Container, Search, Wrapper , Map, CarouseTitle, Carousel} from './style'
 const Home = () =>{
     const [inputValue, setInputValue] = useState('')
+    const [modalOpened, setModalOpened] = useState(false)
     var settings = {
         dots: false,
         infinite: true,
@@ -40,10 +41,12 @@ const Home = () =>{
                     <ImageCard photo={restaurante} title="nome x"/>
                     <ImageCard photo={restaurante}title="nome x"/>
                 </Carousel>
+                <button onClick={()=> setModalOpened(true)}>Abrir modal</button>
                 </Search>
                 <RestauranteCard/>
             </Container>
             <Map/>
+            <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}/>
         </Wrapper>
     )
 }
